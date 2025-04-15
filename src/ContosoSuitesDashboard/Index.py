@@ -2,9 +2,10 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
+
 def main():
     st.write(
-    """
+        """
     # Contoso Suites Main Page
 
     This Streamlit dashboard is intended to serve as a proof of concept of Azure OpenAI functionality for Contoso Suites employees.  It is not intended to be a production-ready application.
@@ -20,6 +21,7 @@ def main():
     6. Copilot Chat. Used in Exercise 05.
     """
     )
+
 
 if __name__ == "__main__":
     main()
