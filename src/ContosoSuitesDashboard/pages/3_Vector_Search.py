@@ -7,7 +7,7 @@ st.set_page_config(layout="wide")
 def handle_query_vectorization(query):
     """Vectorize the query using the Vectorize endpoint."""
     api_endpoint = st.secrets["api"]["endpoint"]
-    response = requests.get(f"{api_endpoint}/Vectorize", params={"text": query}, timeout=10, verify=False)
+    response = requests.get(f"{api_endpoint}/Vectorize", params={"text": query}, timeout=60, verify=False)
     return response.text
 
 
