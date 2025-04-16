@@ -39,10 +39,12 @@ builder.Services.AddSingleton<IDatabaseService, DatabaseService>((_) =>
 builder.Services.AddSingleton<CosmosClient>((_) =>
 {
     string userAssignedClientId = builder.Configuration["AZURE_CLIENT_ID"]!;
+    string tenantId = builder.Configuration["AZURE_TENANT_ID"]!;
     var credential = new DefaultAzureCredential(
         new DefaultAzureCredentialOptions
         {
-            ManagedIdentityClientId = userAssignedClientId
+            ManagedIdentityClientId = userAssignedClientId,
+            TenantId = tenantId
         });
     CosmosClient client = new(
         accountEndpoint: builder.Configuration["CosmosDB:AccountEndpoint"]!,
@@ -76,10 +78,12 @@ builder.Services.AddSingleton<Kernel>((_) =>
     kernelBuilder.Services.AddSingleton<CosmosClient>((_) =>
         {
             string userAssignedClientId = builder.Configuration["AZURE_CLIENT_ID"]!;
+            string tenantId = builder.Configuration["AZURE_TENANT_ID"]!;
             var credential = new DefaultAzureCredential(
                 new DefaultAzureCredentialOptions
                 {
-                    ManagedIdentityClientId = userAssignedClientId
+                    ManagedIdentityClientId = userAssignedClientId,
+                    TenantId = tenantId
                 });
             CosmosClient client = new(
                 accountEndpoint: builder.Configuration["CosmosDB:AccountEndpoint"]!,
